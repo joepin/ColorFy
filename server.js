@@ -1,9 +1,11 @@
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
-require('dotenv').config();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+require('dotenv').config();
+
+const homeRoute = require('./routes/index');
 
 const app = express();
 const port = process.argv[2] || process.env.PORT || 3000;
@@ -21,17 +23,6 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 // routes
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
-app.post('/show', (req, res) => {
-  res.json(req.body);
-});
-
-app.get('/show', (req, res) => {
-  res.json(req.query);
-});
-
+app.use('/', homeRoute);
 
 app.listen(port, () => console.warn(`Listening on port ${port}!`));
