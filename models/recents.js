@@ -1,7 +1,4 @@
-const { MongoClient } = require('mongodb');
-const { ObjectID } = require('mongodb');
-
-const dbConnection = 'mongodb://localhost:27017/colors-project';
+const { getDB } = require('../lib/dbConnect.js');
 
 const addToRecents = (req, res, next) => {
 
@@ -11,12 +8,8 @@ const addToRecents = (req, res, next) => {
     response: res.data,
     colors: res.colors,
   }
-  if (req.user) {
-    newRecord.user = req.user;
-  }
-  MongoClient.connect(dbConnection, (err, db) => {
-    if (err) return next(err);
 
+  getDB().then((db) => {
     db.collection('recents')
     .insert(newRecord, (insertErr, result) => {
       if (insertErr) return next(insertErr);
