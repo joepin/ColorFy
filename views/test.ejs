@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class='show-container' style="background:rgb(<%= red %>, <%= green %>, <%= blue %>)"></div>
+
+  <% tones0.forEach((el) => { %>
+    <p><%= el.score %></p>
+    <p><%= el.tone_name %></p>
+  <% }) %>
+
+  <% tones1.forEach((el) => { %>
+    <p><%= el.score %></p>
+    <p><%= el.tone_name %></p>
+  <% }) %>
+
+  <% tones2.forEach((el) => { %>
+    <p><%= el.score %></p>
+    <p><%= el.tone_name %></p>
+  <% }) %>
+
+</body>
+</html>

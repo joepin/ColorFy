@@ -62,6 +62,11 @@ const addToRecents = (req, res, next) => {
   const newRecord = {
     timeStamp: new Date().toUTCString(),
     text: req.body.main,
+    response: res.data,
+    colors: res.colors,
+  }
+  if (req.user) {
+    newRecord.user = req.user;
   }
   MongoClient.connect(dbConnection, (err, db) => {
     if (err) return next(err);
