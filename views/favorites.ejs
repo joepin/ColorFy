@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><%= user %>'s Favorites</title>
+  <title>Favorites</title>
   <link rel="stylesheet" href="">
 </head>
 <body>
@@ -18,7 +18,7 @@
       <p><%= obj.colors.blue %></p>
     </div>
 
-    <form action='/user/favorites?_method=DELETE' method='POST'>
+    <form action='/users/favorites?_method=DELETE' method='POST'>
       <input type='hidden' name='id' value='<%= obj._id %>'>
       <button type='submit'>Remove from Favorites</button>
     </form>

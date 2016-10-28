@@ -39,7 +39,7 @@ app.use(session({
 
 // routes
 app.use('/', homeRoute);
-app.use('/user', userRoute);
+// app.use('/user', userRoute);
 app.use('/users', usersRoute);
 app.use('/auth', authRoute);
 

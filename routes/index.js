@@ -2,12 +2,13 @@ const router = require('express').Router();
 const watsonService = require('../services/watson');
 const recents = require('../models/recents');
 const functions = require('../lib/functions');
+const auth = require('../lib/auth');
 
 router.get('/', (req, res) => {
   res.render('home/index');
 });
 
-router.post('/show', watsonService.analyzeText, functions.getColors, recents.addToRecents, (req, res) => {
+router.post('/show', auth.authenticate, watsonService.analyzeText, functions.getColors, recents.addToRecents, (req, res) => {
   // res.json(res.data);
   res.render('test', {
     colors: JSON.stringify(res.colors),

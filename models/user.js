@@ -56,8 +56,76 @@ function getUserByUsername(username) {
   });
 }
 
+
+
+function getFavorites(req, res, next) {
+  getDB().then((db) => {
+
+    const filters = {
+      userId: { $eq: req.session.userId },
+    }
+
+    db.collection('favorites')
+      .find(filters)
+      .toArray((arrayError, data) => {
+        if (arrayError) return next(arrayError);
+
+        // return the data
+        res.favorites = data;
+        db.close();
+        return next();
+      });
+    return false;
+  });
+  return false;
+}
+
+function saveFavorite(req, res, next) {
+  getDB().then((db) => {
+
+    const newFavorite = {
+      userID: req.session.userId,
+      timestamp: new Date().toUTCString(),
+      colors: JSON.parse(req.body.colors),
+      requestText: req.body.text,
+      watsonResult: JSON.parse(req.body.watson),
+    }
+
+    db.collection('favorites')
+    .insert(newFavorite, (insertErr, result) => {
+      if (insertErr) return next(insertErr);
+
+      res.saved = result;
+      db.close();
+      return next();
+    });
+    return false;
+  });
+  return false;
+}
+
+function deleteFavorite(req, res, next) {
+  getDB().then((db) => {
+
+    db.collection('favorites')
+      .findAndRemove({ _id: ObjectID(req.body.id) }, (removeErr, doc) => {
+        if (removeErr) return next(removeErr);
+
+        // return the data
+        res.removed = doc;
+        db.close();
+        return next();
+      });
+    return false;
+  });
+  return false;
+}
+
 module.exports = {
   createUser,
   getUserById,
-  getUserByUsername
+  getUserByUsername,
+  getFavorites,
+  saveFavorite,
+  deleteFavorite,
 };
