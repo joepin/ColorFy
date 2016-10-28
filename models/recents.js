@@ -7,6 +7,7 @@ const addToRecents = (req, res, next) => {
     text: req.body.main,
     response: res.data,
     colors: res.colors,
+    userID: req.session.userID,
   }
 
   getDB().then((db) => {

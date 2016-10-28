@@ -62,9 +62,10 @@ function getFavorites(req, res, next) {
   getDB().then((db) => {
 
     const filters = {
-      userId: { $eq: req.session.userId },
+      userID: { $eq: req.session.userID },
     }
-
+    console.log(filters.userID);
+    console.log(req.session.userID);
     db.collection('favorites')
       .find(filters)
       .toArray((arrayError, data) => {
@@ -84,7 +85,7 @@ function saveFavorite(req, res, next) {
   getDB().then((db) => {
 
     const newFavorite = {
-      userID: req.session.userId,
+      userID: req.session.userID,
       timestamp: new Date().toUTCString(),
       colors: JSON.parse(req.body.colors),
       requestText: req.body.text,

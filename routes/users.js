@@ -24,19 +24,21 @@ router.get('/profile', authenticate, (req, res) => {
   res.render('users/profile', { user: res.user });
 });
 
-router.get('/favorites', userModel.getFavorites, (req, res) => {
-  res.render('favorites', {
+router.get('/favorites', authenticate, userModel.getFavorites, (req, res) => {
+  res.render('users/favorites', {
     favorites: res.favorites,
   });
   // res.json(res.favorites);
 });
 
 router.post('/favorites', userModel.saveFavorite, (req, res) => {
-  res.json(res.saved);
+  res.redirect('/users/favorites');
+  // res.json(res.saved);
 });
 
 router.delete('/favorites', userModel.deleteFavorite, (req, res) => {
-  res.json(res.removed);
+    res.redirect('/users/favorites');
+  // res.json(res.removed);
 });
 
 module.exports = router;

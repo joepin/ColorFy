@@ -17,9 +17,9 @@ authRouter.post('/', logIn, (req, res) => {
   res.redirect('/users/profile');
 });
 
-// Logout by assigning null to the userId in the session
+// Logout by assigning null to the userID in the session
 authRouter.delete('/', (req, res) => {
-  req.session.userId = null;
+  req.session.userID = null;
   res.redirect('/');
 });
 
