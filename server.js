@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 require('dotenv').config();
 
 const homeRoute = require('./routes/index');
+const userRoute = require('./routes/user');
 
 const app = express();
 const port = process.argv[2] || process.env.PORT || 3000;
@@ -24,5 +25,6 @@ app.set('views', './views');
 
 // routes
 app.use('/', homeRoute);
+app.use('/user', userRoute);
 
 app.listen(port, () => console.warn(`Listening on port ${port}!`));

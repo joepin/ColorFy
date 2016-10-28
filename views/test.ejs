@@ -10,6 +10,14 @@
 
   <div class='show-container' style="background:rgb(<%= red %>, <%= green %>, <%= blue %>)"></div>
 
+  <form action='/user/favorites' method='POST'>
+    <input type='hidden' name='user' value='joey'>
+    <input type='hidden' name='colors' value='<%= colors %>'>
+    <input type='hidden' name='test' value='<%= text %>'>
+    <input type='hidden' name='watson' value='<%= response %>'>
+    <button type='submit'>Save to Favorites</button>
+  </form>
+
   <% tones0.forEach((el) => { %>
     <p><%= el.score %></p>
     <p><%= el.tone_name %></p>

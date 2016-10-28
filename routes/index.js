@@ -36,6 +36,9 @@ router.get('/', (req, res) => {
 router.post('/show', watsonService.analyzeText, getColors, recents.addToRecents, (req, res) => {
   // res.json(res.data);
   res.render('test', {
+    colors: JSON.stringify(res.colors),
+    text: req.body.main,
+    response: JSON.stringify(res.data),
     red: res.colors.red,
     green: res.colors.green,
     blue: res.colors.blue,
@@ -45,76 +48,76 @@ router.post('/show', watsonService.analyzeText, getColors, recents.addToRecents,
   });
 });
 
-router.get('/test', (req, res) => {
+// router.get('/test', (req, res) => {
 
-  const anger = [255, 0, 0];
-  const disgust = [128, 0, 128];
-  const fear = [255, 255, 0];
-  const joy = [0, 255, 0];
-  const sadness = [0, 0, 255];
-  // const tones = [
-  //   {
-  //     score: 0.123256,
-  //     tone_id: "anger",
-  //     tone_name: "Anger"
-  //   },
-  //   {
-  //     score: 0.009075,
-  //     tone_id: "disgust",
-  //     tone_name: "Disgust"
-  //   },
-  //   {
-  //     score: 0.036772,
-  //     tone_id: "fear",
-  //     tone_name: "Fear"
-  //   },
-  //   {
-  //     score: 0.824371,
-  //     tone_id: "joy",
-  //     tone_name: "Joy"
-  //   },
-  //   {
-  //     score: 0.057288,
-  //     tone_id: "sadness",
-  //     tone_name: "Sadness"
-  //   }
-  // ];
+//   const anger = [255, 0, 0];
+//   const disgust = [128, 0, 128];
+//   const fear = [255, 255, 0];
+//   const joy = [0, 255, 0];
+//   const sadness = [0, 0, 255];
+//   // const tones = [
+//   //   {
+//   //     score: 0.123256,
+//   //     tone_id: "anger",
+//   //     tone_name: "Anger"
+//   //   },
+//   //   {
+//   //     score: 0.009075,
+//   //     tone_id: "disgust",
+//   //     tone_name: "Disgust"
+//   //   },
+//   //   {
+//   //     score: 0.036772,
+//   //     tone_id: "fear",
+//   //     tone_name: "Fear"
+//   //   },
+//   //   {
+//   //     score: 0.824371,
+//   //     tone_id: "joy",
+//   //     tone_name: "Joy"
+//   //   },
+//   //   {
+//   //     score: 0.057288,
+//   //     tone_id: "sadness",
+//   //     tone_name: "Sadness"
+//   //   }
+//   // ];
 
-  const tones = [
-    {
-      score: 0.08747,
-      tone_id: "anger",
-      tone_name: "Anger"
-    },
-    {
-      score: 0.08382,
-      tone_id: "disgust",
-      tone_name: "Disgust"
-    },
-    {
-      score: 0.295857,
-      tone_id: "fear",
-      tone_name: "Fear"
-    },
-    {
-      score: 0.452915,
-      tone_id: "joy",
-      tone_name: "Joy"
-    },
-    {
-      score: 0.153478,
-      tone_id: "sadness",
-      tone_name: "Sadness"
-    }
-  ];
+//   const tones = [
+//     {
+//       score: 0.08747,
+//       tone_id: "anger",
+//       tone_name: "Anger"
+//     },
+//     {
+//       score: 0.08382,
+//       tone_id: "disgust",
+//       tone_name: "Disgust"
+//     },
+//     {
+//       score: 0.295857,
+//       tone_id: "fear",
+//       tone_name: "Fear"
+//     },
+//     {
+//       score: 0.452915,
+//       tone_id: "joy",
+//       tone_name: "Joy"
+//     },
+//     {
+//       score: 0.153478,
+//       tone_id: "sadness",
+//       tone_name: "Sadness"
+//     }
+//   ];
 
 
 
-  res.render('test', {
-    red: Math.floor(rTot),
-    green: Math.floor(gTot),
-    blue: Math.floor(bTot),
-  });
-})
+//   res.render('test', {
+//     red: Math.floor(rTot),
+//     green: Math.floor(gTot),
+//     blue: Math.floor(bTot),
+//   });
+// })
 
 module.exports = router;
