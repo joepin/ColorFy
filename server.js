@@ -9,7 +9,6 @@ const cookieParser    = require('cookie-parser');
 require('dotenv').config();
 
 const homeRoute = require('./routes/index');
-const userRoute = require('./routes/user');
 const authRoute = require('./routes/auth');
 const usersRoute = require('./routes/users');
 
