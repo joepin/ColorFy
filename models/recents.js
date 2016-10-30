@@ -24,6 +24,36 @@ const addToRecents = (req, res, next) => {
   return false;
 }
 
+const addToWordFrequency = (req, res, next) => {
+  const dbFrequency = {};
+  const thisUpload = res.textFrequency;
+
+  return getDB().then((db) => {
+    const promise = new Promise((resolve, reject) => {
+      db.collection('frequency').find().forEach((doc) => {
+        for (let key in thisUpload) {
+          if (doc[key] && thisUpload[key]) {
+            doc[key] += thisUpload[key];
+          } else if (thisUpload[key]) {
+            doc[key] = thisUpload[key];
+          }
+        }
+        for (let key in doc) {
+          dbFrequency[key] = doc[key];
+        }
+        resolve(dbFrequency);
+      });
+    }).then(() => {
+      res.dbFrequency = dbFrequency;
+      db.collection('frequency').update({}, {$set: dbFrequency});
+      db.close();
+      next();
+    });
+    return promise;
+  });
+}
+
 module.exports = {
   addToRecents,
+  addToWordFrequency,
 }

@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   res.render('home/index');
 });
 
-router.post('/show', auth.authenticate, watsonService.analyzeText, functions.getColors, recents.addToRecents, (req, res) => {
+router.post('/show', auth.authenticate, watsonService.analyzeText, functions.getColors, recents.addToRecents, functions.getWordCount, recents.addToWordFrequency, (req, res) => {
   // res.json(res.data);
   res.render('test', {
     colors: JSON.stringify(res.colors),
