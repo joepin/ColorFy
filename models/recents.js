@@ -51,10 +51,12 @@ const addToWordFrequency = (req, res, next) => {
     const promise = new Promise((resolve, reject) => {
       db.collection('frequency').find().forEach((doc) => {
         for (let key in thisUpload) {
-          if (doc[key] && thisUpload[key]) {
-            doc[key] += thisUpload[key];
-          } else if (thisUpload[key]) {
-            doc[key] = thisUpload[key];
+          if (key.length > 3) {
+            if (doc[key] && thisUpload[key]) {
+              doc[key] += thisUpload[key];
+            } else if (thisUpload[key]) {
+              doc[key] = thisUpload[key];
+            }
           }
         }
         for (let key in doc) {

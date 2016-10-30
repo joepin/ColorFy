@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Home</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="scripts.js" type="text/javascript" charset="utf-8" async defer></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="scripts/scripts.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
 <header>
@@ -24,7 +24,9 @@
   <% }) %>
 
   <% for (let key in frequencies) { %>
-    <p><%= key %>: <%= frequencies[key] %></p>
+    <% if (key != '_id') { %>
+      <p><%= key %>: <%= frequencies[key] %></p>
+    <% } %>
   <% } %>
 
 </body>
