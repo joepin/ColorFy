@@ -24,6 +24,25 @@ const addToRecents = (req, res, next) => {
   return false;
 }
 
+const getAllRecents = (req, res, next) => {
+  getDB().then((db) => {
+    db.collection('recents')
+    .find({}, {}, { limit: 5, })
+    .sort({ timestamp:-1 })
+    .limit(5)
+    .toArray((arrayError, data) => {
+      if (arrayError) return next(arrayError);
+
+      // return the data
+      res.allRecents = data;
+      db.close();
+      return next();
+    });
+    return false;
+  });
+  return false;
+}
+
 const addToWordFrequency = (req, res, next) => {
   const dbFrequency = {};
   const thisUpload = res.textFrequency;
@@ -53,7 +72,25 @@ const addToWordFrequency = (req, res, next) => {
   });
 }
 
+const getAllWordFrequencies = (req, res, next) => {
+  getDB().then((db) => {
+    db.collection('frequency')
+    .findOne({}, (err, data) => {
+      if (err) return next(err);
+
+      // return the data
+      res.allFrequencies = data;
+      db.close();
+      return next();
+    });
+    return false;
+  });
+  return false;
+}
+
 module.exports = {
   addToRecents,
+  getAllRecents,
   addToWordFrequency,
+  getAllWordFrequencies,
 }

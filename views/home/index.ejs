@@ -16,9 +16,16 @@
     </header>
 
   <h1>Works!</h1>
-  <form action='show' method='POST'>
-    <textarea name='main' rows='6' columns='100'></textarea>
-    <button type='submit'>Show input</button>
-  </form>
+
+  <a href='/search'>Search!</a>
+
+  <% recents.forEach((el) => { %>
+  <div class='show-container' style="background:rgb(<%= el.colors.red %>, <%= el.colors.green %>, <%= el.colors.blue %>)"></div>
+  <% }) %>
+
+  <% for (let key in frequencies) { %>
+    <p><%= key %>: <%= frequencies[key] %></p>
+  <% } %>
+
 </body>
 </html>

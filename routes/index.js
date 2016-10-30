@@ -4,13 +4,21 @@ const recents = require('../models/recents');
 const functions = require('../lib/functions');
 const auth = require('../lib/auth');
 
-router.get('/', (req, res) => {
-  res.render('home/index');
+router.get('/', recents.getAllRecents, recents.getAllWordFrequencies, (req, res) => {
+  res.render('home/index', {
+    recents: res.allRecents,
+    frequencies: res.allFrequencies,
+  });
+  // res.json(res.allRecents);
 });
+
+router.get('/search', (req, res) => {
+  res.render('home/search');
+})
 
 router.post('/show', auth.authenticate, watsonService.analyzeText, functions.getColors, recents.addToRecents, functions.getWordCount, recents.addToWordFrequency, (req, res) => {
   // res.json(res.data);
-  res.render('test', {
+  res.render('home/results', {
     colors: JSON.stringify(res.colors),
     text: req.body.main,
     response: JSON.stringify(res.data),
