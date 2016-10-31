@@ -25,8 +25,10 @@ router.post('/', createUser, (req, res) => {
 router.get('/profile', authenticate, userModel.getFavorites, (req, res) => {
   res.render('users/profile', {
     user: req.session.username,
+    dbUser: res.user,
     favorites: res.favorites,
   });
+  // res.json(res.user);
 });
 
 router.get('/favorites', authenticate, userModel.getFavorites, (req, res) => {
@@ -44,11 +46,15 @@ router.post('/favorites', userModel.saveFavorite, (req, res) => {
   // res.json(res.saved);
 });
 
-router.delete('/favorites', userModel.deleteFavorite, (req, res) => {
+router.delete('/favorites', authenticate, userModel.deleteFavorite, (req, res) => {
     res.redirect('/users/favorites', {
       user: req.session.username,
     });
   // res.json(res.removed);
+});
+
+router.put('/update', userModel.updateUserInfo, (req, res) => {
+  res.redirect('/users/profile');
 });
 
 module.exports = router;

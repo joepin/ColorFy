@@ -13,7 +13,7 @@ function createUser(req, res, next) {
     email: req.body.email,
 
     // Store hashed password
-    password: bcrypt.hashSync(req.body.user.password, SALTROUNDS)
+    password: bcrypt.hashSync(req.body.password, SALTROUNDS)
   };
 
   getDB().then((db) => {
@@ -25,6 +25,25 @@ function createUser(req, res, next) {
         db.close();
         return next();
       });
+  });
+}
+
+function updateUserInfo(req, res, next) {
+  const userObject = {
+    username: req.body.username,
+    email: req.body.email,
+  };
+
+  if (req.body.password) {
+    // Store hashed password
+    userObject.password = bcrypt.hashSync(req.body.password, SALTROUNDS)
+  }
+
+  getDB().then((db) => {
+    db.collection('users')
+    .update({ _id: ObjectID(req.body.id) }, {$set: userObject});
+    db.close();
+    return next();
   });
 }
 
@@ -122,6 +141,7 @@ function deleteFavorite(req, res, next) {
 
 module.exports = {
   createUser,
+  updateUserInfo,
   getUserById,
   getUserByUsername,
   getFavorites,
