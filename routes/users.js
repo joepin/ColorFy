@@ -22,9 +22,10 @@ router.post('/', createUser, (req, res) => {
  * It redirects to /login when attempted to be reached by a non logged in user
  * It is "protected" by the authenticate middleware from the auth library
  */
-router.get('/profile', authenticate, (req, res) => {
+router.get('/profile', authenticate, userModel.getFavorites, (req, res) => {
   res.render('users/profile', {
     user: req.session.username,
+    favorites: res.favorites,
   });
 });
 

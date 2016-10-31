@@ -64,8 +64,6 @@ function getFavorites(req, res, next) {
     const filters = {
       userID: { $eq: req.session.userID },
     }
-    console.log(filters.userID);
-    console.log(req.session.userID);
     db.collection('favorites')
       .find(filters)
       .toArray((arrayError, data) => {

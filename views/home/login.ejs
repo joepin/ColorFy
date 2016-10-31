@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <title>Login</title>
     <%- include('../snippets/common') %>
   </head>
@@ -12,10 +12,10 @@
     }) %>
     <div class ='main-container flex-container'>
       <div class='credentials-container'>
-        <form class="credentials-form" action="/auth" method="post">
+        <form class='credentials-form' action='/auth' method='post'>
           <h2 class='sub-heading'>Login</h2>
-          <input type="text" name="user[username]" value="" placeholder="Username" class='credential' autofocus>
-          <input type="password" name="user[password]" value="" placeholder="Password" class='credential'>
+          <input type='text' name='username' value='' placeholder='Username' class='credential' autofocus>
+          <input type='password' name='password' value='' placeholder='Password' class='credential'>
           <button type='submit' class='credential'>Login!</button>
         </form>
       </div>
