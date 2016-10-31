@@ -156,3 +156,9 @@ a:visited {
   justify-content: center;
   align-items: center;
 }
+
+.big-text {
+  height: 80vh;
+  width: 80vw;
+  margin: 0 auto;
+}

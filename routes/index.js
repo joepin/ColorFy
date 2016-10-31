@@ -39,6 +39,7 @@ router.post('/show', watsonService.analyzeText, functions.getColors, recents.add
 router.get('/login', (req, res) => {
   res.render('home/login', {
     user: req.session.username,
+    errorMessage: null,
   });
 });
 

@@ -10,6 +10,10 @@
     <%- include('../snippets/header', {
       user: user,
     }) %>
+
+    <% if (errorMessage) { %>
+      <p class='error'><%= errorMessage %></p>
+    <% } %>
     <div class ='main-container flex-container'>
       <div class='credentials-container'>
         <form class='credentials-form' action='/auth' method='post'>

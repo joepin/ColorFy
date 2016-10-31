@@ -28,7 +28,7 @@ const getAllRecents = (req, res, next) => {
   getDB().then((db) => {
     db.collection('recents')
     .find({}, {}, { limit: 5, })
-    .sort({ timestamp:1 })
+    .sort({ timestamp:-1 })
     .limit(5)
     .toArray((arrayError, data) => {
       if (arrayError) return next(arrayError);
