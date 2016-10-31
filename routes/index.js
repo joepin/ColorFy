@@ -48,4 +48,11 @@ router.get('/signup', (req, res) => {
   });
 });
 
+router.get('/recents', (req, res) => {
+  res.render('home/recents', {
+    user: req.session.username,
+    recents: res.recents,
+  });
+});
+
 module.exports = router;

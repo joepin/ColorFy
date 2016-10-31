@@ -8,7 +8,9 @@
 </head>
 <body>
 
-<%- include('../snippets/header') %>
+<%- include('../snippets/header', {
+  user: user,
+}) %>
 
   <form action='show' method='POST'>
     <textarea name='main' rows='6' columns='100' autofocus></textarea>

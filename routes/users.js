@@ -12,9 +12,7 @@ const router  = express.Router();
  * It uses the createUser middleware from the user model
  */
 router.post('/', createUser, (req, res) => {
-  res.redirect('/users/profile', {
-    user: req.session.username,
-  });
+  res.redirect('/users/profile');
 });
 
 /**
@@ -39,17 +37,13 @@ router.get('/favorites', authenticate, userModel.getFavorites, (req, res) => {
   // res.json(res.favorites);
 });
 
-router.post('/favorites', userModel.saveFavorite, (req, res) => {
-  res.redirect('/users/favorites', {
-    user: req.session.username,
-  });
+router.post('/favorites', authenticate, userModel.saveFavorite, (req, res) => {
+  res.redirect('/users/favorites');
   // res.json(res.saved);
 });
 
 router.delete('/favorites', authenticate, userModel.deleteFavorite, (req, res) => {
-    res.redirect('/users/favorites', {
-      user: req.session.username,
-    });
+    res.redirect('/users/favorites');
   // res.json(res.removed);
 });
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Favorites</title>
+  <title>Recents</title>
   <%- include('../snippets/common') %>
 </head>
 <body>
@@ -12,10 +12,10 @@
   user: user,
 }) %>
 
-<h1><%= user %>'s Favorites</h1>
+<h1>All Recent Searches</h1>
 
   <div class='flex-container favorites-container'>
-  <% favorites.forEach((obj) => { %>
+  <% recents.forEach((obj) => { %>
     <div class='individual-favorite'>
       <div class='individual-show-container' style='background:rgb(<%= obj.colors.red %>, <%= obj.colors.green %>, <%= obj.colors.blue %>)'>
         <!-- <p>timestamp: <%= obj.timestamp %></p> -->
@@ -27,10 +27,6 @@
         </div> -->
         <p class='request-text'>Search Text: <%= obj.requestText %></p>
       </div>
-      <form action='/users/favorites?_method=DELETE' method='POST'>
-        <input type='hidden' name='id' value='<%= obj._id %>'>
-        <button type='submit'>Remove from Favorites</button>
-      </form>
     </div>
   <% }) %>
   </div>

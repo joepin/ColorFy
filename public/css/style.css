@@ -124,9 +124,35 @@ a:visited {
 }
 
 .update-credential {
-  display: block;
+  display: inline-block;
+  font-size: 3vh;
+  margin: 2vh 0;
 }
 
-.upper-container {
-  margin: 5%;
+.favorites-container {
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.individual-favorite {
+  height: 15vh;
+  width: 80vw;
+  margin: 2.5% 0;
+  border: 1px solid black;
+}
+
+.individual-show-container {
+  display: inline-block;
+  height: 10vh;
+  width: 100%;
+  overflow: scroll;
+}
+
+.request-text {
+  margin-left: 10%;
+}
+
+.field-container {
+  justify-content: center;
+  align-items: center;
 }
