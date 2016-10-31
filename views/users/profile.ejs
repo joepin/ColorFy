@@ -3,10 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Profile</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/scripts/scripts.js" type="text/javascript" charset="utf-8" async defer></script>
+    <%- include('../snippets/common') %>
   </head>
   <body>
+
+  <%- include('../snippets/header') %>
+
     <h1>Welcome! <%= user.username %></h1>
     <a href='/search'>Search!</a>
     <form action="/auth?_method=DELETE" method="post">

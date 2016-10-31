@@ -6,9 +6,8 @@ const functions = require('../lib/functions');
 const auth = require('../lib/auth');
 
 router.get('/', recents.getAllRecents, recents.getAllWordFrequencies, (req, res) => {
-  const userObj = userModel.getUserById(req.session.userID)
   res.render('home/index', {
-    user: userObj.username,
+    user: req.session.username,
     recents: res.allRecents,
     frequencies: res.allFrequencies,
   });
@@ -16,12 +15,15 @@ router.get('/', recents.getAllRecents, recents.getAllWordFrequencies, (req, res)
 });
 
 router.get('/search', (req, res) => {
-  res.render('home/search');
+  res.render('home/search', {
+    user: req.session.username
+  });
 })
 
 router.post('/show', watsonService.analyzeText, functions.getColors, recents.addToRecents, functions.getWordCount, recents.addToWordFrequency, (req, res) => {
   // res.json(res.data);
   res.render('home/results', {
+    user: req.session.username,
     colors: JSON.stringify(res.colors),
     text: req.body.main,
     response: JSON.stringify(res.data),
@@ -34,16 +36,16 @@ router.post('/show', watsonService.analyzeText, functions.getColors, recents.add
   });
 });
 
-router.get('/test', (req, res) => {
-  res.json(req.session);
-})
-
 router.get('/login', (req, res) => {
-  res.render('home/login');
+  res.render('home/login', {
+    user: req.session.username,
+  });
 });
 
 router.get('/signup', (req, res) => {
-  res.render('home/signup');
+  res.render('home/signup', {
+    user: req.session.username,
+  });
 });
 
 module.exports = router;

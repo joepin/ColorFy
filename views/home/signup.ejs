@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>Sign up</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="/scripts/scripts.js" type="text/javascript" charset="utf-8" async defer></script>
+    <meta charset='utf-8'>
+    <title>Sign Up</title>
+    <%- include('../snippets/common') %>
   </head>
   <body>
-    <h1>Sign up</h1>
-    <form class="" action="/users" method="post">
-        <input type="text" name="user[username]" value="" placeholder="Username" autofocus>
-        <input type="password" name="user[password]" value="" placeholder="Password">
-        <input type="submit" value="Sign up">
-    </form>
+
+  <%- include('../snippets/header') %>
+
+    <div class ='main-container flex-container'>
+      <div class='credentials-container'>
+        <form class='credentials-form' action='/users' method='post'>
+          <h2 class='sub-heading'>Sign Up</h2>
+          <input type='text' name='username' value='' placeholder='Username' class='credential' autofocus>
+          <input type='text' name='email' value='' placeholder='Email' class='credential'>
+          <input type='password' name='password' value='' placeholder='Password' class='credential'>
+          <button type='submit' class='credential'>Sign up!</button>
+        </form>
+      </div>
+    </div>
+
   </body>
 </html>

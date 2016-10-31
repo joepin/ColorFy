@@ -1,11 +1,51 @@
 <header class='header flex-container'>
-    <div class="logo">
-      <h1 class="title">Color to Emotions</h1>
+    <div class='logo'>
+      <a href='/'><h1 class='title'>ColorMe_<span class='title-changing' id='word-scroll'>Happy</span></h1></a>
     </div>
     <nav class='main-nav flex-container'>
-      <a href="/signup" class='link-button'>Sign Up</a>
-      <a href="/login" class='link-button'>Log In</a>
-      <form action='/auth?_method=DELETE' method='POST'><button type='submit' class='link-button'>Log Out</button></form>
-      <a href="/search" class='link-button'>Color Search</a>
+      <% if (user) { %>
+        <span class='user-info'>
+          Hi, <%= user %>!
+          <form action='/auth?_method=DELETE' method='POST' class='nav-form'><button type='submit' class='link-button'>Log Out</button></form>
+        </span>
+      <% } %>
+      <a href='/signup' class='link-button'>Sign Up</a>
+      <a href='/login' class='link-button'>Log In</a>
+      <a href='/search' class='link-button'>Color Search</a>
     </nav>
-  </header>
+</header>
+
+<script>
+const emotionsArray = [
+  {
+    name: 'Angry',
+    color: '#F00',
+  },
+  {
+    name: 'Disgusted',
+    color: '#800080',
+  },
+  {
+    name: 'Scared',
+    color: '#FF0',
+  },
+  {
+    name: 'Sad',
+    color: '#00F',
+  },
+  {
+    name: 'Happy',
+    color: '#0F0',
+  },
+];
+let count = 0;
+const $word = document.querySelector('#word-scroll');
+const wordScrollTimer = setInterval(() => {
+  if (count == emotionsArray.length) {
+    count = 0;
+  }
+  $word.innerText = emotionsArray[count].name;
+  $word.style.color = emotionsArray[count].color;
+  count++;
+}, 500);
+</script>

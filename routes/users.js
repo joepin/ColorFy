@@ -12,7 +12,9 @@ const router  = express.Router();
  * It uses the createUser middleware from the user model
  */
 router.post('/', createUser, (req, res) => {
-  res.redirect('/');
+  res.redirect('/users/profile', {
+    user: req.session.username,
+  });
 });
 
 /**
@@ -21,23 +23,30 @@ router.post('/', createUser, (req, res) => {
  * It is "protected" by the authenticate middleware from the auth library
  */
 router.get('/profile', authenticate, (req, res) => {
-  res.render('users/profile', { user: res.user });
+  res.render('users/profile', {
+    user: req.session.username,
+  });
 });
 
 router.get('/favorites', authenticate, userModel.getFavorites, (req, res) => {
   res.render('users/favorites', {
+    user: req.session.username,
     favorites: res.favorites,
   });
   // res.json(res.favorites);
 });
 
 router.post('/favorites', userModel.saveFavorite, (req, res) => {
-  res.redirect('/users/favorites');
+  res.redirect('/users/favorites', {
+    user: req.session.username,
+  });
   // res.json(res.saved);
 });
 
 router.delete('/favorites', userModel.deleteFavorite, (req, res) => {
-    res.redirect('/users/favorites');
+    res.redirect('/users/favorites', {
+      user: req.session.username,
+    });
   // res.json(res.removed);
 });
 
