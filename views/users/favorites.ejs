@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Favorites</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="scripts/scripts.js" type="text/javascript" charset="utf-8" async defer></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/scripts/scripts.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 <body>
 
@@ -20,7 +20,8 @@
       <p><%= obj.colors.green %></p>
       <p><%= obj.colors.blue %></p>
     </div>
-
+    <p>Text: <%= obj.requestText %></p>
+    <div class='show-container' style="background:rgb(<%= obj.colors.red %>, <%= obj.colors.green %>, <%= obj.colors.blue %>)"></div>
     <form action='/users/favorites?_method=DELETE' method='POST'>
       <input type='hidden' name='id' value='<%= obj._id %>'>
       <button type='submit'>Remove from Favorites</button>
