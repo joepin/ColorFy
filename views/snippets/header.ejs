@@ -9,9 +9,14 @@
           <form action='/auth?_method=DELETE' method='POST' class='nav-form'><button type='submit' class='link-button'>Log Out</button></form>
         </span>
       <% } %>
-      <a href='/signup' class='link-button'>Sign Up</a>
-      <a href='/login' class='link-button'>Log In</a>
-      <a href='/search' class='link-button'>Color Search</a>
+      <% if (user) { %>
+        <a href='/users/profile' class='link-button'>Profile</a>
+        <a href='/search' class='link-button'>Color Search</a>
+      <% } else { %>
+        <a href='/signup' class='link-button'>Sign Up</a>
+        <a href='/login' class='link-button'>Log In</a>
+      <% } %>
+
     </nav>
 </header>
 

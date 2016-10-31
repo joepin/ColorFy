@@ -95,7 +95,7 @@ a:visited {
   background: lightblue;
   color: black;
   border: 1px solid black;
-  line-height: 10vh;
+  line-height: 9vh;
   padding: 0 1vw;
   display: inline-block;
 }
@@ -114,4 +114,19 @@ a:visited {
 
 #word-scroll {
   color: #0F0;
+}
+
+.user-info-container {
+  background: lightpink;
+  margin: 0 auto;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.update-credential {
+  display: block;
+}
+
+.upper-container {
+  margin: 5%;
 }
