@@ -24,7 +24,7 @@ router.get('/search', (req, res) => {
 // posting to results first authenticates the user, then calls the Watson API to analyze the text, then converts the result
 // into a color, then adds the search to the recents collection in the database, then gets the word frequency count of the
 // current search, then adds that frequency count to the global count, then renders the result to the user.
-router.post('/results', auth.authenticate, watsonService.analyzeText, functions.getColors, recents.addToRecents, functions.getWordCount, recents.addToWordFrequency, (req, res) => {
+router.post('/results', auth.authenticate, watsonService.analyzeText, functions.getColors, recents.addToRecents, (req, res) => {
   res.render('home/results', {
     user: req.session.username,
     colors: JSON.stringify(res.colors),
