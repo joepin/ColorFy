@@ -1,7 +1,9 @@
 <header class='header flex-container'>
-    <div class='logo'>
-      <a href='/'><h1 class='title'>ColorMe_<span class='title-changing' id='word-scroll'>Happy</span></h1></a>
-    </div>
+    <a href='/'>
+      <div class='logo'>
+        <h1 class='title'>ColorFy_<span class='title-changing' id='word-scroll'>Happy</span></h1>
+      </div>
+    </a>
     <nav class='main-nav flex-container'>
       <% if (user) { %>
         <span class='user-info'>
@@ -17,6 +19,7 @@
         <a href='/signup' class='link-button'>Sign Up</a>
         <a href='/login' class='link-button'>Log In</a>
       <% } %>
+        <a href='/recents' class='link-button'>Recents</a>
 
     </nav>
 </header>

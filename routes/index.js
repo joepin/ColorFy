@@ -20,7 +20,7 @@ router.get('/search', (req, res) => {
   });
 })
 
-router.post('/show', watsonService.analyzeText, functions.getColors, recents.addToRecents, functions.getWordCount, recents.addToWordFrequency, (req, res) => {
+router.post('/results', auth.authenticate, watsonService.analyzeText, functions.getColors, recents.addToRecents, functions.getWordCount, recents.addToWordFrequency, (req, res) => {
   // res.json(res.data);
   res.render('home/results', {
     user: req.session.username,

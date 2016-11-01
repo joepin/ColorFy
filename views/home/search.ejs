@@ -12,12 +12,11 @@
   user: user,
 }) %>
 
-  <div class='flex-container'>
-    <form action='show' method='POST'>
-      <textarea name='main' class='big-text' autofocus></textarea>
-      <button type='submit'>Analyze Text</button>
+    <form action='/results' method='POST' class='flex-container search-container' id='search-submit'>
+      <p id='message-box'>Press CTRL + ENTER to submit!</p>
+      <textarea name='main' class='big-text' placeholder='Enter text here!' autofocus></textarea>
+      <button type='submit' class='search-submit'>Analyze Text</button>
     </form>
-  </div>
 </body>
 </html>
 
