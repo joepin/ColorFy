@@ -1,6 +1,8 @@
 /* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
 /* eslint no-param-reassign: ["error", { "props": false }] */
 
+// this route is based on the route created by Rafa Pacas
+
 const express = require('express');
 const { logIn } = require('../lib/auth');
 
