@@ -78,10 +78,17 @@ function getUserByUsername(username) {
 
 
 function getFavorites(req, res, next) {
+
+  if (!req.session.userID && !req.query.id){
+    const err = new Error('Please supply a valid user ID');
+    res.favorites = err;
+    next(err);
+  }
+
   getDB().then((db) => {
 
     const filters = {
-      userID: { $eq: req.session.userID },
+      userID: { $eq: req.session.userID || req.query.id },
     }
     db.collection('favorites')
       .find(filters)

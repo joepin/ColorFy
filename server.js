@@ -11,6 +11,7 @@ require('dotenv').config();
 const homeRoute = require('./routes/index');
 const authRoute = require('./routes/auth');
 const usersRoute = require('./routes/users');
+const apiRoute = require('./routes/api');
 
 const app = express();
 const port = process.argv[2] || process.env.PORT || 3000;
@@ -38,8 +39,8 @@ app.use(session({
 
 // routes
 app.use('/', homeRoute);
-// app.use('/user', userRoute);
 app.use('/users', usersRoute);
 app.use('/auth', authRoute);
+app.use('/api', apiRoute);
 
 app.listen(port, () => console.warn(`Listening on port ${port}!`));
