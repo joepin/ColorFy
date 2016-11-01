@@ -21,4 +21,13 @@ window.onload = () => {
       }
     });
   }
+
+  const $logout = document.querySelector('#logout-button');
+  if ($logout) {
+    const $logoutForm = document.querySelector('#logout-form');
+    $logout.addEventListener('click', (e) => {
+      e.preventDefault();
+      $logoutForm.submit();
+    })
+  }
 }
