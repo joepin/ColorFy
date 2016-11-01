@@ -3,6 +3,7 @@
 const express      = require('express');
 const { createUser }    = require('../models/user.js');
 const { authenticate }   = require('../lib/auth');
+const { logIn }   = require('../lib/auth');
 const userModel = require('../models/user');
 
 const router  = express.Router();
@@ -13,8 +14,12 @@ const router  = express.Router();
  * Creates a new user by handling the POST request from a form with action `/users`
  * It uses the createUser middleware from the user model
  */
-router.post('/', createUser, (req, res) => {
-  res.redirect('/users/profile');
+router.post('/', createUser, logIn, (req, res) => {
+  res.render('users/profile', {
+    user: req.session.username,
+    dbUser: res.user,
+    favorites: [],
+  });
 });
 
 /**
