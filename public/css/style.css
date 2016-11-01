@@ -136,6 +136,10 @@ a:visited {
   text-align: right;
 }
 
+.user-info a {
+  color: blue;
+}
+
 #word-scroll {
   color: #0F0;
 }

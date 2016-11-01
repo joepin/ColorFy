@@ -49,10 +49,10 @@ router.get('/signup', (req, res) => {
   });
 });
 
-router.get('/recents', (req, res) => {
+router.get('/recents', recents.getAllRecents, (req, res) => {
   res.render('home/recents', {
     user: req.session.username,
-    recents: res.recents,
+    recents: res.allRecents,
   });
 });
 
