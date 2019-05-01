@@ -34,5 +34,13 @@
     <p>In addition to being a wickidely cool project, ColorFy is completely open source, so feel free to <a href='https://github.com/joepin/ColorFy' target='blank'>check out the code!</a> It also offers a relatively simple API, whose docs can be <a href='/api'>found here.</a></p>
   </div>
 
+  <div style='display:none'>
+  <% for (let key in frequencies) { %>
+    <% if (key != '_id') { %>
+      <p><%= key %>: <%= frequencies[key] %></p>
+    <% } %>
+  <% } %>
+ </div>
+
 </body>
 </html>
