@@ -29,6 +29,42 @@ const analyzeText = (req, res, next) => {
   });
 }
 
+const mockedAnalyzeText = (req, res, next) => {
+  res.data = {
+    document_tone: {
+      tone_categories: [{
+        tones: [
+          {score: Math.random()},
+          {score: Math.random()},
+          {score: Math.random()},
+          {score: Math.random()},
+          {score: Math.random()},
+        ]
+      },
+      {
+        tones: [
+          {score: Math.random()},
+          {score: Math.random()},
+          {score: Math.random()},
+          {score: Math.random()},
+          {score: Math.random()},
+        ]
+      },
+      {
+        tones: [
+          {score: Math.random()},
+          {score: Math.random()},
+          {score: Math.random()},
+          {score: Math.random()},
+          {score: Math.random()},
+        ]
+      }],
+    },
+  }
+  console.log("here", res.data);
+  next();
+}
+
 module.exports = {
-  analyzeText,
+  analyzeText: mockedAnalyzeText,
 }
